@@ -46,4 +46,16 @@ $(document).ready(function () {
 
   $(".loader").show();
   $("#popular").addClass("d-none");
+
+  $.ajax({
+    url: "https://smileschool-api.hbtn.info/popular-tutorials",
+    method: "GET",
+    success: function (response) {
+      $(".popular .loader").hide();
+      $("#carouselExampleControls2").removeClass("d-none");
+    
+      response.forEach(video, index) => {
+        const videoVard = `
+        `
+      })
 });
