@@ -55,7 +55,7 @@ $(document).ready(function () {
       $("#carouselExampleControls2").removeClass("d-none");
     
       response.forEach(video, index) => {
-        const videoVard = `
+        const videoCard = `
         `
       })
 });
