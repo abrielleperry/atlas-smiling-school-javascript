@@ -61,8 +61,8 @@ $(document).ready(function () {
           <div class="carousel-item ${index === 0 ? "active" : ""}">
               <div class="card">
                 <img src="${video.thumb_url}" class="card-img-top" alt="Video thumbnail" />
-                <div class="card-img-overlay text-center">
-                  <img src="images/play.png" alt="Play" width="64px" class="align-self-center play-overlay" />
+                <div class="card-img-overlay text-center ">
+                  <img src="images/play.png" alt="Play" width="64px" class="d-flex mx-auto play-overlay" />
                 </div>
                 <div class="card-body">
                   <h5 class="card-title font-weight-bold">${video.title}</h5>
@@ -72,7 +72,7 @@ $(document).ready(function () {
                     <h6 class="pl-3 m-0 main-color">${video.author}</h6>
                   </div>
                   <div class="info pt-3 d-flex justify-content-between">
-                    <div class="rating">
+                    <div class="rating row">
                       ${getRatingStars(video.star)}
                     </div>
                     <span class="main-color">${video.duration}</span>
@@ -112,7 +112,7 @@ $(document).ready(function () {
       },
       error: function () {
         $(".loader").hide();
-        alert("Failed to load popular tutorials.");
+        alert("unable to load most popular tutorials api");
       }
     });
   }
