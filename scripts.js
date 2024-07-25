@@ -122,9 +122,9 @@ $(document).ready(function () {
     let stars = "";
     for (let i = 0; i < 5; i++) {
       if (i < starCount) {
-        stars += '<img src="images/star_on.png" alt="star on" width="15px" />';
+        stars += '<img src="images/star_on.png" alt="star on" width="15px" height="15px" />';
       } else {
-        stars += '<img src="images/star_off.png" alt="star off" width="15px" />';
+        stars += '<img src="images/star_off.png" alt="star off" width="15px" height="15px" />';
       }
     }
     return stars;
