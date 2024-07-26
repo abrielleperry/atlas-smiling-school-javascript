@@ -35,7 +35,7 @@ $(document).ready(function () {
       },
       error: function () {
         $(".loader").hide();
-        alert("Failed to load quotes.");
+        alert("failed to load quotes api");
       }
     });
   }
@@ -106,7 +106,7 @@ function getPopularCarouselData() {
       },
       error: function () {
         $(".loader").hide();
-        alert("Unable to load most popular tutorials api");
+        alert("failed to load most popular tutorials api");
       }
     });
   }
