@@ -41,16 +41,12 @@ $(document).ready(function () {
   }
   getQuotesCarouselData();
 
-  function getPopularCarouselData() {
+function getPopularCarouselData() {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/popular-tutorials",
       method: "GET",
       beforeSend: function () {
         $(".loader").show();
-        console.log("AJAX Request:", {
-          url: "https://smileschool-api.hbtn.info/popular-tutorials",
-          method: "GET"
-        });
       },
       success: function (response) {
         $(".loader").hide();
@@ -58,7 +54,7 @@ $(document).ready(function () {
 
         response.forEach((video, index) => {
           const carouselInner = `
-          <div class="carousel-item ${index === 0 ? "active" : ""}">
+          <div class="carousel-item">
               <div class="card">
                 <img src="${video.thumb_url}" class="card-img-top" alt="Video thumbnail" />
                 <div class="card-img-overlay text-center ">
@@ -82,17 +78,15 @@ $(document).ready(function () {
           </div>
           `;
           $("#popular-carousel .carousel-inner").append(carouselInner);
-          
         });
 
         $('#popular-carousel .carousel-inner').slick({
           slidesToShow: 4,
           slidesToScroll: 1,
           arrows: true,
-          prevArrow: $(".carousel-control-prev"),
-          nextArrow: $(".carousel-control-next"),
+          prevArrow: $("#popular-carousel .carousel-control-prev"),
+          nextArrow: $("#popular-carousel .carousel-control-next"),
           responsive: [
-            
             {
               breakpoint: 768,
               settings: {
@@ -112,7 +106,7 @@ $(document).ready(function () {
       },
       error: function () {
         $(".loader").hide();
-        alert("unable to load most popular tutorials api");
+        alert("Unable to load most popular tutorials api");
       }
     });
   }

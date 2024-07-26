@@ -10,6 +10,7 @@
   --pros-padding: 62px;
   --quotes-arrows-pad: 300px;
   --popular-arrows-x: -6vw;
+  --latest-arrows-x: -6vw;
   --smile-p-margin: 20px;
   --check-color: #82d24f;
 
@@ -209,7 +210,6 @@
 }
 
 .section .card-img-overlay {
-  /* top: 25px; */
   top: 5%;
 }
 .section .card-title {
@@ -228,13 +228,18 @@
   width: 60px;
 }
 
+
 .popular .carousel-control-prev.arrow-left {
   left: var(--popular-arrows-x);
 }
 
+
+
 .popular .carousel-control-next.arrow-right {
   right: var(--popular-arrows-x);
 }
+
+
 
 @media screen and (max-width: 1280px) {
   :root {
@@ -250,7 +255,6 @@
     --popular-arrows-x: -3vw;
   }
   .section .card-img-overlay {
-    /* top: 25px; */
     top: 4%;
   }
   .section .card-img-overlay img {
@@ -270,7 +274,6 @@
     width: 30%;
   }
   .section .card-img-overlay {
-    /* top: 25px; */
     top: 5%;
   }
 }
@@ -292,10 +295,10 @@
     width: 30%;
   }
   .section .card-img-overlay {
-    /* top: 25px; */
     top: 5%;
   }
 }
+
 
 /* SMILES Section  */
 
