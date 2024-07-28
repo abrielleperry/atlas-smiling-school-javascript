@@ -1,15 +1,14 @@
+$(document).ready(function() {
+  function showLoader() {
+    $(".loader").show();
+  }
 
-
-$(document).ready(function () {
-  
-  function showLoader() { }
-  $(".loader").show();
-};
   function hideLoader() {
     $(".loader").hide();
-};
-  
+  }
+
   showLoader();
+
   $("#quote-carousel").addClass("d-none");
   $("#popular-carousel").addClass("d-none");
 
@@ -125,80 +124,64 @@ $(document).ready(function () {
   }
   getPopularCarouselData();
 
-  function getRatingStars(starCount) {
-    let stars = "";
-    for (let i = 0; i < 5; i++) {
-      if (i < starCount) {
-        stars +=
-          '<img src="images/star_on.png" alt="star on" width="15px" height="15px" />';
-      } else {
-        stars +=
-          '<img src="images/star_off.png" alt="star off" width="15px" height="15px" />';
+  function getDataForSearchResults() {
+    showLoader();
+    $.ajax({
+      url: "https://smileschool-api.hbtn.info/courses",
+      method: "GET",
+      data: {
+        q: $("#search-input").val(),
+        topic: $("#topicDropdown").data("value"),
+        sort: $("#sortDropdown").data("value")
+      },
+      success: function(response) {
+        hideLoader();
+        loadDropDowns(response.topics, response.sorts);
+
+        $("#search-input").val(response.q);
+        $("#topicDropdown").data("value", response.topic);
+        $("#sortDropdown").data("value", response.sort);
+
+        loadVideoCards(response.courses);
+
+        $(".video-count").text(`${response.courses.length} videos`);
+      },
+      error: function() {
+        hideLoader();
+        alert("failed to load search results");
       }
-    }
-    return stars;
+    });
   }
 
-function getVideosForSearchResults() {
-  $.ajax({
-    url: "https://smileschool-api.hbtn.info/courses",
-    method: "GET",
-    data: {
-      q: search,
-      topic: topic,
-      sort: sort
-    },
-    success: function (response) {
-      hideLoader();
-        
-      loadDropDowns(response.topics, resonse.sorts);
+  // load dropdowns
+  function loadDropDowns(topics, sorts) {
+    $("#topic-menu").empty(); // load topic dropdown
+    topics.forEach(topic => {
+      $("#topic-menu").append(
+        `<a class="dropdown-item" href="#" data-value="${topic}">${topic}</a>`
+      );
+    });
 
-      $("#search-input").val(response.q);
-      $("#topicDropdown").data("value", response.topic);
-      $("#sortDropdown").data("value", response.sort);
-      
-      loadVideoCards(response.courses);
+    $("#sort-menu").empty(); // load sort dropdown
+    sorts.forEach(sort => {
+      $("#sort-menu").append(
+        `<a class="dropdown-item" href="#" data-value="${sort}">${sort}</a>`
+      );
+    });
 
-      $(".video-count").text(`${response.courses.length} videos`);
-    },
-    error: function () {
-      hideLoader();
-      alert("failed to load search results");
-    }
-  });
-}
+    // set default values for dropdowns
+    $("topicDropdown span").text("All");
+    $("sortDropdown span").text("Most Popular");
+  }
 
-// load dropdowns
-function loadDropDowns(topics, sorts) {
-  $("#topicDropdown").empty(); // load topic dropdown
-  topics.forEach(topic => {
-    $("#topicDropdown").append(
-      `<a class="dropdown-item" href="#" data-value="${topic}">${topic}</a>`
-    );
-  });
-
-  $("#sortDropdown").empty(); // load sort dropdown
-  sorts.forEach(sort => {
-    $("#sortDropdown").append(
-      `<a class="dropdown-item" href="#" data-value="${sort}">${sort}</a>`
-    );
-  });
-
-  // set default values for dropdowns
-  $('topicDropdown span').text('All');
-  $('sortDropdown span').text('Most Popular');
-
-}
-
-
-function loadVideos(courses) {
-  $("#video-cards").empty();
-  courses.forEach(video => {
-    const videoItem = `
+  function loadVideoCards(courses) {
+    $("#video-cards").empty();
+    courses.forEach(video => {
+      const videoItem = `
       <div class="col-12 col-sm-4 col-lg-3 d-flex justify-content-center">
               <div class="card">
                 <img
-                  src=${"video.thumb_url"}
+                  src="${video.thumb_url}"
                   class="card-img-top"
                   alt="Video thumbnail"
                 />
@@ -217,7 +200,7 @@ function loadVideos(courses) {
                   </p>
                   <div class="creator d-flex align-items-center">
                     <img
-                      src=${"video.author_pic_url"}
+                      src="${video.author_pic_url}"
                       alt="Creator of
                       Video"
                       width="30px"
@@ -234,6 +217,41 @@ function loadVideos(courses) {
                 </div>
               </div>
             </div>
-    `
-  })
-}
+    `;
+      $("#video-cards").append(videoItem);
+    });
+  }
+
+  function getRatingStars(starCount) {
+    let stars = "";
+    for (let i = 0; i < 5; i++) {
+      if (i < starCount) {
+        stars +=
+          '<img src="images/star_on.png" alt="star on" width="15px" height="15px" />';
+      } else {
+        stars +=
+          '<img src="images/star_off.png" alt="star off" width="15px" height="15px" />';
+      }
+    }
+    return stars;
+  }
+
+  $("#search-input").on("input", getDataForSearchResults);
+
+  $("topic-menu").on("click", "a", function(e) {
+    e.preventDefault();
+    const selectedTopic = $(this).data("value");
+    $("#topicDropdown").data("value", selectedTopic);
+    $("#topicDropdown span").text($(this).text());
+    getDataForSearchResults();
+  });
+
+  $("#sort-menu").on("click", "a", function(e) {
+    e.preventDefault();
+    const selectedSort = $(this).data("value");
+    $("#sortDropdown").data("value", selectedSort);
+    $("#sortDropdown span").text($(this).text().replace("_", " "));
+    getDataForSearchResults();
+  });
+  getDataForSearchResults();
+});
