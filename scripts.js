@@ -32,7 +32,9 @@ $(document).ready(function() {
           $("#quote-carousel .carousel-inner").append(carouselItem);
         });
 
-        $("#quote-carousel").carousel();
+        $("#quote-carousel").carousel({
+          interval: false
+        });
       },
       error: function() {
         $(".loader").hide();
