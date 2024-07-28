@@ -19,15 +19,27 @@
     />
 
     <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <!-- Slick CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
     ></script>
     <script
@@ -35,13 +47,19 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
-    />
+    ></script>
+
+    <!-- Slick JS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <!-- Custom JS -->
+    <script src="scripts.js"></script>
   </head>
   <body class="body">
     <header class="header courses-header">
@@ -95,7 +113,7 @@
             </ul>
           </div>
         </nav>
-
+        <!--HERO-->
         <section class="hero text-center text-white d-none d-sm-block">
           <h1 class="my-0">
             « Don’t cry because it’s over.<br /><span class="main-color"
@@ -107,14 +125,15 @@
       </div>
     </header>
     <main>
+      <!--SEARCH-->
       <section class="section search">
         <div class="container">
           <div class="row py-4">
+            <!--BOX 1-->
             <div class="col-12 col-sm-12 col-lg-4 box1">
               <span class="text-white font-weight-bold drop-down-title"
                 >KEYWORDS</span
               >
-
               <div class="input-group mb-sm-4">
                 <div class="input-group-prepend">
                   <span
@@ -124,12 +143,14 @@
                 <input
                   type="text"
                   class="form-control search-text-area"
+                  id="search-input"
                   aria-label="Default"
                   aria-describedby="inputGroup-sizing-default"
                   placeholder="Search by keywords"
                 />
               </div>
             </div>
+            <!--BOX 2-->
             <div class="col-12 col-sm-6 col-lg-4 box2">
               <span class="text-white font-weight-bold drop-down-title"
                 >TOPIC</span
@@ -139,7 +160,7 @@
                   class="btn dropdown-toggle text-left"
                   href="#"
                   role="button"
-                  id="dropdownMenuLink"
+                  id="dropdownMenuLink topicDropdown"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
@@ -150,13 +171,16 @@
                 <div
                   class="dropdown-menu mt-0"
                   aria-labelledby="dropdownMenuLink"
+                  id="topic-menu"
                 >
+                  <!--TOPIC DROPDOWN ITEMS
                   <a class="dropdown-item" href="#">Novice</a>
                   <a class="dropdown-item" href="#">Intermediate</a>
-                  <a class="dropdown-item" href="#">Expert</a>
+                  <a class="dropdown-item" href="#">Expert</a> -->
                 </div>
               </div>
             </div>
+            <!--BOX 3-->
             <div class="col-12 col-sm-6 col-lg-4 box3">
               <span class="text-white font-weight-bold drop-down-title"
                 >SORT BY</span
@@ -166,7 +190,7 @@
                   class="btn dropdown-toggle text-left"
                   href="#"
                   role="button"
-                  id="dropdownMenuLink"
+                  id="dropdownMenuLink sortDropdown"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
@@ -177,22 +201,26 @@
                 <div
                   class="dropdown-menu mt-0"
                   aria-labelledby="dropdownMenuLink"
+                  id="sort-menu"
                 >
+                  <!--SORT BY DROPDOWN ITEMS
                   <a class="dropdown-item" href="#">Most Popular</a>
                   <a class="dropdown-item" href="#">Most Recent</a>
-                  <a class="dropdown-item" href="#">Most Viewed</a>
+                  <a class="dropdown-item" href="#">Most Viewed</a>-->
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <!--SEARCH RESULT VIDEOS-->
       <section class="section results">
         <div class="container">
           <div class="section-title">
-            <span class="text-muted video-count">11 videos</span>
+            <span class="text-muted video-count">0 videos</span>
           </div>
-          <div class="row">
+          <div class="row" id="video-cards">
+            <!--VIDEO CARDS
             <div class="col-12 col-sm-4 col-lg-3 d-flex justify-content-center">
               <div class="card">
                 <img
@@ -897,6 +925,7 @@
                 </div>
               </div>
             </div>
+            -->
           </div>
         </div>
       </section>

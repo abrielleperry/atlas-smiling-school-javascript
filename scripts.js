@@ -1,5 +1,15 @@
-$(document).ready(function() {
+
+
+$(document).ready(function () {
+  
+  function showLoader() { }
   $(".loader").show();
+};
+  function hideLoader() {
+    $(".loader").hide();
+};
+  
+  showLoader();
   $("#quote-carousel").addClass("d-none");
   $("#popular-carousel").addClass("d-none");
 
@@ -8,7 +18,7 @@ $(document).ready(function() {
       url: "https://smileschool-api.hbtn.info/quotes",
       method: "GET",
       success: function(response) {
-        $(".loader").hide();
+        hideLoader();
         $("#quote-carousel").removeClass("d-none");
 
         response.forEach((quote, index) => {
@@ -37,7 +47,7 @@ $(document).ready(function() {
         });
       },
       error: function() {
-        $(".loader").hide();
+        hideLoader();
         alert("failed to load quotes api");
       }
     });
@@ -49,10 +59,10 @@ $(document).ready(function() {
       url: "https://smileschool-api.hbtn.info/popular-tutorials",
       method: "GET",
       beforeSend: function() {
-        $(".loader").show();
+        showLoader();
       },
       success: function(response) {
-        $(".loader").hide();
+        hideLoader();
         $("#popular-carousel").removeClass("d-none");
 
         response.forEach((video, index) => {
@@ -108,7 +118,7 @@ $(document).ready(function() {
         });
       },
       error: function() {
-        $(".loader").hide();
+        hideLoader();
         alert("failed to load most popular tutorials api");
       }
     });
@@ -128,4 +138,102 @@ $(document).ready(function() {
     }
     return stars;
   }
-});
+
+function getVideosForSearchResults() {
+  $.ajax({
+    url: "https://smileschool-api.hbtn.info/courses",
+    method: "GET",
+    data: {
+      q: search,
+      topic: topic,
+      sort: sort
+    },
+    success: function (response) {
+      hideLoader();
+        
+      loadDropDowns(response.topics, resonse.sorts);
+
+      $("#search-input").val(response.q);
+      $("#topicDropdown").data("value", response.topic);
+      $("#sortDropdown").data("value", response.sort);
+      
+      loadVideoCards(response.courses);
+
+      $(".video-count").text(`${response.courses.length} videos`);
+    },
+    error: function () {
+      hideLoader();
+      alert("failed to load search results");
+    }
+  });
+}
+
+// load dropdowns
+function loadDropDowns(topics, sorts) {
+  $("#topicDropdown").empty(); // load topic dropdown
+  topics.forEach(topic => {
+    $("#topicDropdown").append(
+      `<a class="dropdown-item" href="#" data-value="${topic}">${topic}</a>`
+    );
+  });
+
+  $("#sortDropdown").empty(); // load sort dropdown
+  sorts.forEach(sort => {
+    $("#sortDropdown").append(
+      `<a class="dropdown-item" href="#" data-value="${sort}">${sort}</a>`
+    );
+  });
+
+  // set default values for dropdowns
+  $('topicDropdown span').text('All');
+  $('sortDropdown span').text('Most Popular');
+
+}
+
+
+function loadVideos(courses) {
+  $("#video-cards").empty();
+  courses.forEach(video => {
+    const videoItem = `
+      <div class="col-12 col-sm-4 col-lg-3 d-flex justify-content-center">
+              <div class="card">
+                <img
+                  src=${"video.thumb_url"}
+                  class="card-img-top"
+                  alt="Video thumbnail"
+                />
+                <div class="card-img-overlay text-center">
+                  <img
+                    src="images/play.png"
+                    alt="Play"
+                    width="64px"
+                    class="align-self-center play-overlay"
+                  />
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title font-weight-bold">${video.title}</h5>
+                  <p class="card-text text-muted">
+                    ${video["sub-title"]}
+                  </p>
+                  <div class="creator d-flex align-items-center">
+                    <img
+                      src=${"video.author_pic_url"}
+                      alt="Creator of
+                      Video"
+                      width="30px"
+                      class="rounded-circle"
+                    />
+                    <h6 class="pl-3 m-0 main-color">${video.author}</h6>
+                  </div>
+                  <div class="info pt-3 d-flex justify-content-between">
+                    <div class="rating">
+                  ${getRatingStars(video.star)}
+                    </div>
+                    <span class="main-color">${"video.duration"}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+    `
+  })
+}
