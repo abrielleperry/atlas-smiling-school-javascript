@@ -7,8 +7,6 @@ $(document).ready(function() {
     $(".loader").hide();
   }
 
-  showLoader();
-
   $("#quote-carousel").addClass("d-none");
   $("#popular-carousel").addClass("d-none");
 
@@ -170,8 +168,8 @@ $(document).ready(function() {
     });
 
     // set default values for dropdowns
-    $("topicDropdown span").text("All");
-    $("sortDropdown span").text("Most Popular");
+    $("#topicDropdown span").text("All");
+    $("#sortDropdown span").text("Most Popular");
   }
 
   function loadVideoCards(courses) {
@@ -212,7 +210,7 @@ $(document).ready(function() {
                     <div class="rating">
                   ${getRatingStars(video.star)}
                     </div>
-                    <span class="main-color">${"video.duration"}</span>
+                    <span class="main-color">${video.duration}</span>
                   </div>
                 </div>
               </div>
@@ -238,7 +236,7 @@ $(document).ready(function() {
 
   $("#search-input").on("input", getDataForSearchResults);
 
-  $("topic-menu").on("click", "a", function(e) {
+  $("#topic-menu").on("click", "a", function(e) {
     e.preventDefault();
     const selectedTopic = $(this).data("value");
     $("#topicDropdown").data("value", selectedTopic);
