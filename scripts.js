@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   $(".loader").show();
   $("#quote-carousel").addClass("d-none");
   $("#popular-carousel").addClass("d-none");
@@ -7,7 +7,7 @@ $(document).ready(function () {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/quotes",
       method: "GET",
-      success: function (response) {
+      success: function(response) {
         $(".loader").hide();
         $("#quote-carousel").removeClass("d-none");
 
@@ -16,7 +16,8 @@ $(document).ready(function () {
           <div class="carousel-item ${index === 0 ? "active" : ""}">
             <div class="row mx-auto align-items-center">
               <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
-                <img src="${quote.pic_url}" class="d-block align-self-center" alt="Carousel Pic ${index + 1}" />
+                <img src="${quote.pic_url}" class="d-block align-self-center rounded-circle  alt="Carousel Pic ${index +
+            1}" />
               </div>
               <div class="col-12 col-sm-7 offset-sm-2 col-lg-9 offset-lg-0">
                 <div class="quote-text">
@@ -31,9 +32,9 @@ $(document).ready(function () {
           $("#quote-carousel .carousel-inner").append(carouselItem);
         });
 
-        $('#quote-carousel').carousel();
+        $("#quote-carousel").carousel();
       },
-      error: function () {
+      error: function() {
         $(".loader").hide();
         alert("failed to load quotes api");
       }
@@ -41,14 +42,14 @@ $(document).ready(function () {
   }
   getQuotesCarouselData();
 
-function getPopularCarouselData() {
+  function getPopularCarouselData() {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/popular-tutorials",
       method: "GET",
-      beforeSend: function () {
+      beforeSend: function() {
         $(".loader").show();
       },
-      success: function (response) {
+      success: function(response) {
         $(".loader").hide();
         $("#popular-carousel").removeClass("d-none");
 
@@ -80,7 +81,7 @@ function getPopularCarouselData() {
           $("#popular-carousel .carousel-inner").append(carouselInner);
         });
 
-        $('#popular-carousel .carousel-inner').slick({
+        $("#popular-carousel .carousel-inner").slick({
           slidesToShow: 4,
           slidesToScroll: 1,
           arrows: true,
@@ -104,7 +105,7 @@ function getPopularCarouselData() {
           ]
         });
       },
-      error: function () {
+      error: function() {
         $(".loader").hide();
         alert("failed to load most popular tutorials api");
       }
@@ -116,9 +117,11 @@ function getPopularCarouselData() {
     let stars = "";
     for (let i = 0; i < 5; i++) {
       if (i < starCount) {
-        stars += '<img src="images/star_on.png" alt="star on" width="15px" height="15px" />';
+        stars +=
+          '<img src="images/star_on.png" alt="star on" width="15px" height="15px" />';
       } else {
-        stars += '<img src="images/star_off.png" alt="star off" width="15px" height="15px" />';
+        stars +=
+          '<img src="images/star_off.png" alt="star off" width="15px" height="15px" />';
       }
     }
     return stars;

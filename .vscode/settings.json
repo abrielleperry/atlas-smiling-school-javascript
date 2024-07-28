@@ -1,3 +1,7 @@
 {
-  "editor.defaultFormatter": "NikolaosGeorgiou.html-fmt-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "bysabi.prettier-vscode-standard"
+  },
+  "editor.formatOnPaste": true
 }
