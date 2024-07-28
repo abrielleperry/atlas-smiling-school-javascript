@@ -14,6 +14,9 @@ $(document).ready(function() {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/quotes",
       method: "GET",
+      beforeSend: function() {
+        showLoader();
+      },
       success: function(response) {
         hideLoader();
         $("#quote-carousel").removeClass("d-none");
@@ -23,7 +26,7 @@ $(document).ready(function() {
           <div class="carousel-item ${index === 0 ? "active" : ""}">
             <div class="row mx-auto align-items-center">
               <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
-                <img src="${quote.pic_url}" class="d-block align-self-center rounded-circle  alt="Carousel Pic ${index +
+                <img src="${quote.pic_url}" class="d-block align-self-center rounded-circle"  alt="Carousel Pic ${index +
             1}" />
               </div>
               <div class="col-12 col-sm-7 offset-sm-2 col-lg-9 offset-lg-0">
@@ -168,8 +171,8 @@ $(document).ready(function() {
     });
 
     // set default values for dropdowns
-    $("#topicDropdown span").text("All");
-    $("#sortDropdown span").text("Most Popular");
+    $("#topicDropdown > span").text("All");
+    $("#sortDropdown > span").text("Most Popular");
   }
 
   function loadVideoCards(courses) {
