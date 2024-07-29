@@ -129,6 +129,17 @@ $(document).ready(function() {
   }
   getPopularCarouselData();
 
+  function getLatestCarouselData() {
+    $.ajax({
+      url: "https://smileschool-api.hbtn.info/latest-videos",
+      method: "GET",
+      beforeSend: function () {
+        showLoader();
+      },
+      success: function (response) {
+        hideLoader();
+        $("#latest-carousel").removeClass("d-none");
+
   function getDataForSearchResults() {
     showLoader();
     $.ajax({
