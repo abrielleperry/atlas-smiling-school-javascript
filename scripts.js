@@ -10,6 +10,10 @@ $(document).ready(function() {
   $("#quote-carousel").addClass("d-none");
   $("#popular-carousel").addClass("d-none");
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   function getQuotesCarouselData() {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/quotes",
@@ -156,20 +160,22 @@ $(document).ready(function() {
 
   // LOAD/POPULATE DROPDOWNS
   function loadDropDowns(topics, sorts) {
-    $("#topic-menu").empty(); // load topic dropdown
+    // pop topic dd
+    $("#topic-menu").empty();
     topics.forEach(topic => {
+      const capitalizeTopics = capitalizeFirstLetter(topic);
       $("#topic-menu").append(
-        `<a class="dropdown-item" href="#" data-value="${topic}">${topic}</a>`
+        `<a class="dropdown-item" href="#" data-value="${topic}">${capitalizeTopics}</a>`
       );
     });
 
-    $("#sort-menu").empty(); // load sort dropdown
+    // pop sort by dd
+    $("#sort-menu").empty();
     sorts.forEach(sort => {
+      const capitalizeSortBys = capitalizeFirstLetter(sort.replace(/_/g, " "));
+
       $("#sort-menu").append(
-        `<a class="dropdown-item" href="#" data-value="${sort}">${sort.replace(
-          /_/,
-          " "
-        )}</a>`
+        `<a class="dropdown-item" href="#" data-value="${sort}">${capitalizeSortBys}</a>`
       );
     });
 
@@ -246,7 +252,7 @@ $(document).ready(function() {
     e.preventDefault();
     const selectedTopic = $(this).data("value");
     $("#topicDropdown").data("value", selectedTopic);
-    $("#topicDropdown span").text($(this).text());
+    $("#topicDropdown span").text(capitalizeFirstLetter($(this).text()));
     getDataForSearchResults();
   });
 
@@ -254,7 +260,9 @@ $(document).ready(function() {
     e.preventDefault();
     const selectedSort = $(this).data("value");
     $("#sortDropdown").data("value", selectedSort);
-    $("#sortDropdown span").text($(this).text().replace(/_/g, " "));
+    $("#sortDropdown span").text(
+      capitalizeFirstLetter($(this).text().replace(/_/g, " "))
+    );
     getDataForSearchResults();
   });
   getDataForSearchResults();
