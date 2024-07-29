@@ -154,7 +154,7 @@ $(document).ready(function() {
     });
   }
 
-  // load dropdowns
+  // LOAD/POPULATE DROPDOWNS
   function loadDropDowns(topics, sorts) {
     $("#topic-menu").empty(); // load topic dropdown
     topics.forEach(topic => {
@@ -166,7 +166,10 @@ $(document).ready(function() {
     $("#sort-menu").empty(); // load sort dropdown
     sorts.forEach(sort => {
       $("#sort-menu").append(
-        `<a class="dropdown-item" href="#" data-value="${sort}">${sort}</a>`
+        `<a class="dropdown-item" href="#" data-value="${sort}">${sort.replace(
+          /_/,
+          " "
+        )}</a>`
       );
     });
 
@@ -251,7 +254,7 @@ $(document).ready(function() {
     e.preventDefault();
     const selectedSort = $(this).data("value");
     $("#sortDropdown").data("value", selectedSort);
-    $("#sortDropdown span").text($(this).text().replace("_", " "));
+    $("#sortDropdown span").text($(this).text().replace(/_/g, " "));
     getDataForSearchResults();
   });
   getDataForSearchResults();
