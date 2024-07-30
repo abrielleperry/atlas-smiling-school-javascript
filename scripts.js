@@ -113,7 +113,7 @@ $(document).ready(function() {
               }
             },
             {
-              breakpoint: 480,
+              breakpoint: 576,
               settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1
@@ -147,7 +147,7 @@ $(document).ready(function() {
 
         response.forEach((card, index) => {
           let carouselInner = `
-        <div class="carousel-item  ">
+        <div class="carousel-item">
             <div class="card">
               <img src="${card.thumb_url}" class="card-img-top" alt="Video thumbnail" />
               <div class="card-img-overlay text-center ">
@@ -195,7 +195,7 @@ $(document).ready(function() {
               }
             },
             {
-              breakpoint: 480,
+              breakpoint: 576,
               settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1,

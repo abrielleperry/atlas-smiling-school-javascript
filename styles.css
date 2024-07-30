@@ -411,20 +411,6 @@
   }
 }
 
-.carousel-section .slick-arrow.slick-hidden {
-  display: block !important;
-  opacity: 0.5;
-}
-
-.carousel-section .slick-arrow {
-  display: block;
-  opacity: 0.5;
-}
-
-.carousel-section .slick-arrow:hover {
-  opacity: 1;
-}
-
 /* SMILES Section  */
 
 .smiles {
