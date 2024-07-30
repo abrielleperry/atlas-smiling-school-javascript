@@ -83,7 +83,7 @@ $(document).ready(function() {
                   <p class="card-text text-muted">${card["sub-title"]}</p>
                   <div class="creator d-flex align-items-center">
                     <img src="${card.author_pic_url}" alt="Creator of Video" width="30px" class="rounded-circle" />
-                    <h6 class="pl-3 m-0 main-color">${video.author}</h6>
+                    <h6 class="pl-3 m-0 main-color">${card.author}</h6>
                   </div>
                   <div class="info pt-3 d-flex justify-content-between">
                     <div class="rating row">
