@@ -27,7 +27,7 @@ $(document).ready(function() {
         $("#quote-carousel").removeClass("d-none");
 
         response.forEach((quote, index) => {
-          const carouselItem = `
+          let carouselItem = `
           <div class="carousel-item ${index === 0 ? "active" : ""}">
             <div class="row mx-auto align-items-center">
               <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
@@ -140,54 +140,76 @@ $(document).ready(function() {
       success: function(response) {
         hideLoader();
         $("#latest-carousel").removeClass("d-none");
-        response.forEach((video, index) => {
+
+        if (response.length <= 4) {
+          response = [...response, ...response];
+        }
+
+        response.forEach((card, index) => {
           let carouselInner = `
-        <div class="carousel-item">
+        <div class="carousel-item  ">
             <div class="card">
-              <img src="${video.thumb_url}" class="card-img-top" alt="Video thumbnail" />
+              <img src="${card.thumb_url}" class="card-img-top" alt="Video thumbnail" />
               <div class="card-img-overlay text-center ">
                 <img src="images/play.png" alt="Play" width="64px" class="d-flex mx-auto play-overlay" />
               </div>
               <div class="card-body">
-                <h5 class="card-title font-weight-bold">${video.title}</h5>
-                <p class="card-text text-muted">${video["sub-title"]}</p>
+                <h5 class="card-title font-weight-bold">${card.title}</h5>
+                <p class="card-text text-muted">${card["sub-title"]}</p>
                 <div class="creator d-flex align-items-center">
-                  <img src="${video.author_pic_url}" alt="Creator of Video" width="30px" class="rounded-circle" />
-                  <h6 class="pl-3 m-0 main-color">${video.author}</h6>
+                  <img src="${card.author_pic_url}" alt="Creator of Video" width="30px" class="rounded-circle" />
+                  <h6 class="pl-3 m-0 main-color">${card.author}</h6>
                 </div>
                 <div class="info pt-3 d-flex justify-content-between">
                   <div class="rating row">
-                    ${getRatingStars(video.star)}
+                    ${getRatingStars(card.star)}
                   </div>
-                  <span class="main-color">${video.duration}</span>
+                  <span class="main-color">${card.duration}</span>
                 </div>
             </div>
           </div>
         </div>
+      
         `;
           $("#latest-carousel .carousel-inner").append(carouselInner);
         });
 
         $("#latest-carousel .carousel-inner").slick({
+          infinite: true,
           slidesToShow: 4,
           slidesToScroll: 1,
+
+          prevArrow: $("#latest-carousel .carousel-control-prev"),
+          nextArrow: $("#latest-carousel .carousel-control-next"),
 
           responsive: [
             {
               breakpoint: 768,
               settings: {
                 slidesToShow: 2,
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                prevArrow: $("#latest-carousel .carousel-control-prev"),
+                nextArrow: $("#latest-carousel .carousel-control-next")
               }
             },
             {
               breakpoint: 480,
               settings: {
                 slidesToShow: 1,
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                prevArrow: $("#latest-carousel .carousel-control-prev"),
+                nextArrow: $("#latest-carousel .carousel-control-next")
               }
             }
           ]
+        }), $(
+          "#latest-carousel .carousel-control-prev"
+        ).on("click", function() {
+          console.log("prev arrow clicked");
         });
       },
       error: function() {
@@ -256,7 +278,7 @@ $(document).ready(function() {
   function loadVideoCards(courses) {
     $("#video-cards").empty();
     courses.forEach(video => {
-      const videoItem = `
+      let videoItem = `
       <div class="col-12 col-sm-4 col-lg-3 d-flex justify-content-center">
               <div class="card">
                 <img
