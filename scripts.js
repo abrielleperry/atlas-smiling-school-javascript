@@ -70,26 +70,26 @@ $(document).ready(function() {
         hideLoader();
         $("#popular-carousel").removeClass("d-none");
 
-        response.forEach((video, index) => {
+        response.forEach((card, index) => {
           let carouselInner = `
           <div class="carousel-item">
-              <div class="card">
-                <img src="${video.thumb_url}" class="card-img-top" alt="Video thumbnail" />
+              <div class="card justify-content-center">
+                <img src="${card.thumb_url}" class="card-img-top" alt="Video thumbnail" />
                 <div class="card-img-overlay text-center ">
                   <img src="images/play.png" alt="Play" width="64px" class="d-flex mx-auto play-overlay" />
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title font-weight-bold">${video.title}</h5>
-                  <p class="card-text text-muted">${video["sub-title"]}</p>
+                  <h5 class="card-title font-weight-bold">${card.title}</h5>
+                  <p class="card-text text-muted">${card["sub-title"]}</p>
                   <div class="creator d-flex align-items-center">
-                    <img src="${video.author_pic_url}" alt="Creator of Video" width="30px" class="rounded-circle" />
+                    <img src="${card.author_pic_url}" alt="Creator of Video" width="30px" class="rounded-circle" />
                     <h6 class="pl-3 m-0 main-color">${video.author}</h6>
                   </div>
                   <div class="info pt-3 d-flex justify-content-between">
                     <div class="rating row">
-                      ${getRatingStars(video.star)}
+                      ${getRatingStars(card.star)}
                     </div>
-                    <span class="main-color">${video.duration}</span>
+                    <span class="main-color">${card.duration}</span>
                   </div>
               </div>
             </div>
@@ -145,26 +145,26 @@ $(document).ready(function() {
           response = [...response, ...response];
         }
 
-        response.forEach((card, index) => {
+        response.forEach((item, index) => {
           let carouselInner = `
         <div class="carousel-item">
             <div class="card">
-              <img src="${card.thumb_url}" class="card-img-top" alt="Video thumbnail" />
+              <img src="${item.thumb_url}" class="card-img-top" alt="Video thumbnail" />
               <div class="card-img-overlay text-center ">
                 <img src="images/play.png" alt="Play" width="64px" class="d-flex mx-auto play-overlay" />
               </div>
               <div class="card-body">
-                <h5 class="card-title font-weight-bold">${card.title}</h5>
-                <p class="card-text text-muted">${card["sub-title"]}</p>
+                <h5 class="card-title font-weight-bold">${item.title}</h5>
+                <p class="card-text text-muted">${item["sub-title"]}</p>
                 <div class="creator d-flex align-items-center">
-                  <img src="${card.author_pic_url}" alt="Creator of Video" width="30px" class="rounded-circle" />
-                  <h6 class="pl-3 m-0 main-color">${card.author}</h6>
+                  <img src="${item.author_pic_url}" alt="Creator of Video" width="30px" class="rounded-circle" />
+                  <h6 class="pl-3 m-0 main-color">${item.author}</h6>
                 </div>
                 <div class="info pt-3 d-flex justify-content-between">
                   <div class="rating row">
-                    ${getRatingStars(card.star)}
+                    ${getRatingStars(item.star)}
                   </div>
-                  <span class="main-color">${card.duration}</span>
+                  <span class="main-color">${item.duration}</span>
                 </div>
             </div>
           </div>
@@ -249,7 +249,7 @@ $(document).ready(function() {
     });
   }
 
-  // LOAD/POPULATE DROPDOWNS
+  // POPU DDS
   function loadDropDowns(topics, sorts) {
     // pop topic dd
     $("#topic-menu").empty();
@@ -270,7 +270,7 @@ $(document).ready(function() {
       );
     });
 
-    // set default values for dropdowns
+    // set default values for dds
     $("#topicDropdown > span").text("All");
     $("#sortDropdown > span").text("Most Popular");
   }
