@@ -1,5 +1,7 @@
 # Build a web app in JavaScript
 
+[Page hosted here](https://abrielleperry.github.io/atlas-smiling-school-javascript/)
+
 ## Project Overview
 
 For this project, I utilized my knowledge of HTML, CSS, Accessibility, Responsive Design, Bootstrap, and JavaScript. The objective was to create fully functional web pages that matched the design provided by Nicolas Philippot, a UI/UX designer. 
