@@ -54,4 +54,4 @@ Abrielle Perry
 
  - <a href="mailto:abrielleperry22@icloud.com">Email</a>
  - [LinkedIn](www.linkedin.com/in/abriellerperry)
-   [GitHub](https://github.com/abrielleperry)
+ -  [GitHub](https://github.com/abrielleperry)
