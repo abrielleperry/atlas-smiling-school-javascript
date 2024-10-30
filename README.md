@@ -1,3 +1,5 @@
+![enter image description here](https://lh3.googleusercontent.com/pw/AP1GczMD-YcX1qyDUeUGEa8yk4yTUnVOhfnubxFj2cmYPgzCHzxA4jAgqCCSClEcXeehDDZmoKjNAXAJ_ndhMcngxPCGAyxtFv3WWRbqKiEWMEA-Vsohtz2JyCelIev0k0Y7cTCpWWUiKoIrGF6PTTi9Hmt31gqthjUsSwIjLmz0IVkHoXiQT3Njh3pe9aCL3MC4PO6FstePwYU4k58V5A-N7j8uijzIpqVCnQMXu6ctAma0_sEeM2krQ-9D8mGSxTS6F5u2vpfnf5QDLp-T47x16RZiid6qnkMxllvD3G8ulvxJbIBLNfQ2s1MR9ZUWSwFSLv2BZkoFDBsJYGchx8VEvA1DAgnqhSr4t9bMDdYSv2VfgRzV-hP6Q81zrrKo7p4T_9uwOGAprIzUZFydCYSEwubjH5U_gWDkq2rn25SImEpx1e578HQrRw5MifbHTp3sZFrNGfd5b85iVyxIWjOjlCzZ-kL3tyEwu3MvC45Psiibm005XvWP2suvk5_nP6PtuqKJ2A2GlV7M_ssJN9ImpyiIfvHSfukiXHKJ3_XWHulRV7F0pnLehuBMfgqPBaxTS5SR7mLaNAqsiAE5cAFHyGLv0AmrmKGE04B1UZNyV6JCO9gmhmC0uK0hW2SEzRGnZHbSQnaInY7oxU1dU45uU7fGSnh1j2AtRVPZ1VGUYHQnN0bHaEjvMZcRUzA3-_mLHmHZu5KaSXRSDUIOZuipoZAZPCdGR_K3Mi1OMCBKx36-AZTLzNGr8NxVv7xYOaRukJqngNUTu82QfrhZ5POh0g8QzF6TQIM8eUUoyHgIj4Ck458IGubZQknZ30bU0LB7OboQpIDIjIwgmm8rFqRSem_0EhYUSFvsGtFZoJOZxNVeDg6MXClOaKnF7LJa1Rh-LOV89YR8CzxoOe6xSSpz27fjktN1bjVufA46LZQkr8rj8G3V27sayG3leb96=w2704-h1517-s-no?authuser=0)
+
 # Build a web app in JavaScript
 
 [Page hosted here](https://abrielleperry.github.io/atlas-smiling-school-javascript/)
@@ -44,3 +46,12 @@ The design for the web pages was created by Nicolas Philippot. I could find the 
 -   [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 -  [ Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 -   [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+
+
+## Authors
+Abrielle Perry
+
+ - <a href="mailto:abrielleperry22@icloud.com">Email</a>
+ - [LinkedIn](www.linkedin.com/in/abriellerperry)
+   [GitHub](https://github.com/abrielleperry)
